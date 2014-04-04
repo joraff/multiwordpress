@@ -1,0 +1,9 @@
+{
+  "id": "testsite1",
+  "database": "wp-test1",
+  "db_password": ".",
+  "db_username": "wp-test1",
+  "hostname": "test1.tamu.edu",
+  "server": "server1.tamu.edu",
+  "title": "Test site for chef wordpress cookbook"
+}

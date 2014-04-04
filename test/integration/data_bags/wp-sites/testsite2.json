@@ -1,0 +1,8 @@
+{
+  "id": "testsite2",
+  "database": "wp-test2",
+  "db_password": "dh27394kdbff729103fnd729120484dhj",
+  "db_username": "wp-test2",
+  "hostname": "test2.tamu.edu",
+  "server": "server1.tamu.edu"
+}

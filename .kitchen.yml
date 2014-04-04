@@ -1,0 +1,46 @@
+---
+driver:
+  name: vagrant
+  vm_hostname: server1.tamu.edu
+  network:
+  - ["private_network", {ip: "33.33.33.10"}]
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+  - name: centos-6.4
+
+suites:
+  - name: default
+    run_list:
+      - recipe[wordpress::default]
+    attributes:
+      mysql:
+        server_debian_password: "iloverandombutthiswilldo"
+        server_root_password: "iloverandombutthiswilldo"
+        server_repl_password: "iloverandombutthiswilldo"
+      wordpress:
+        sites:
+          test1.tamu.edu:
+            id: testsite1
+            database: wp-test1
+            db_username: wp-test1
+            db_password: dh27394kdbff729103fnd729120484dhj
+            hostname: test1.tamu.edu
+            title: Test site for the TAMU chef wordpress cookbook
+          test2.tamu.edu:
+            id: testsite2
+            database: wp-test2
+            db_username: wp-test2
+            db_password: dh27394kdbff729103fnd729120484dhj
+            hostname: test2.tamu.edu
+            title: Test site 2 for the TAMU chef wordpress cookbook
+          bcsfishtacos.tamu.edu:
+            id: bcsfishtacos
+            database: wp-bcsfishtacos
+            db_username: wp-bcsfishtacos
+            db_password: dh27394kdbff729103fnd729120484dhj
+            hostname: bcsfishtacos.tamu.edu
+            title: Best Fish Tacos in the B/CS Area!
