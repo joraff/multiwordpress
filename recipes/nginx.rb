@@ -1,24 +1,14 @@
 include_recipe 'nginx::default'
 include_recipe 'wordpress::wpcli'
+include_recipe 'mysql::client'
+include_recipe 'php'
+include_recipe 'php::module_mysql'
 
 apache_site 'default' do
   enable false
 end
 
 node['wordpress']['sites'].each do |id,site|
-  mysql_database site['database'] do
-    connection ({:host => 'localhost', :username => 'root', :password => node['mysql']['server_root_password']})
-    action :create
-  end
-
-  mysql_database_user site['db_username'] do
-    connection ({:host => 'localhost', :username => 'root', :password => node['mysql']['server_root_password']})
-    password site['db_password']
-    database_name site['database']
-    privileges [:select,:update,:insert,:create,:delete]
-    action :grant
-  end
-
   docroot = ::File.join( node['wordpress']['install_base'], site['hostname'] )
 
   wordpress_site site['hostname'] do
